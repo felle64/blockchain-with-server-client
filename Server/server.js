@@ -1,26 +1,18 @@
 const express = require("express");
+const dotenv = require("dotenv");
 const cors = require("cors");
-const Blockchain = require("./Modules/Blockchain");
+const blocks = require("./routes/blockchain-routes");
+
+dotenv.config({ path: "./config/config.env" });
 
 const app = express();
-const blockchain = new Blockchain();
 
 app.use(express.json());
 app.use(cors());
+app.use("/api/1/blockchain", blocks);
 
-app.get("/api/1/blockchain", (req, res) => {
-  res.status(200).json(blockchain.chain);
-});
+const PORT = process.env.PORT;
 
-app.post("/api/1/blockchain", (req, res) => {
-  console.log(req.body);
-  const { data } = req.body;
-  const addedBlock = blockchain.addBlock({ data });
-
-  res.status(201).json({ message: "added new block", block: addedBlock });
-});
-
-const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });
