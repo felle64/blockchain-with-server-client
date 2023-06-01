@@ -7,6 +7,9 @@ class Blockchain {
   }
 
   addBlock({ data }) {
+    if (data === undefined || data === null || data === "") {
+      throw new Error("Block must have data!");
+    }
     const addedBlock = Block.mineBlock({ lastBlock: this.chain.at(-1), data });
     this.chain.push(addedBlock);
     return addedBlock;
