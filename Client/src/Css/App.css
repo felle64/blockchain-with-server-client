@@ -4,6 +4,8 @@
   margin: 8px 0;
   box-sizing: border-box;
   display: flex;
+  font-size: 22px;
+  font-family: "Times New Roman", Times, serif;
 }
 .addButton {
   background-color: #4caf50;
@@ -31,4 +33,11 @@
 }
 .getButton:hover {
   background-color: #007095;
+}
+
+.outputBox {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 22px;
+  font-family: "Times New Roman", Times, serif;
 }

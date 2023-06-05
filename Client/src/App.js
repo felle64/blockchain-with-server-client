@@ -25,10 +25,16 @@ const App = () => {
     const data = {
       data: e.target[0].value,
     };
-    await axios.post(`${baseURL}/api/1/blockchain`, data).then((response) => {
-      console.log(response.data);
-    });
-    axiosGet();
+    try {
+      const res = await axios.post(`${baseURL}/api/1/blockchain`, data);
+      console.log(res.data);
+    } catch (error) {
+      if (error.response.status === 400) {
+        console.log(error.response.data);
+      } else {
+        console.log(error.response.status);
+      }
+    }
   };
 
   return (
@@ -44,7 +50,7 @@ const App = () => {
       <button className="getButton" onClick={axiosGet}>
         Get data from chain
       </button>
-      <div>
+      <div className="outputBox">
         {data.map((item, index) => (
           <div key={index}>
             <p>{item.data}</p>
