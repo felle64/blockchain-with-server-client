@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import "./Css/App.css";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -33,7 +34,16 @@ const App = () => {
   return (
     <div>
       <h1>Blockchain Client</h1>
-      <button onClick={axiosGet}>Get data from chain</button>
+
+      <form onSubmit={handleSubmit}>
+        <input className="inputBox" type="text" placeholder="data" />
+        <button className="addButton" type="submit">
+          Add Block
+        </button>
+      </form>
+      <button className="getButton" onClick={axiosGet}>
+        Get data from chain
+      </button>
       <div>
         {data.map((item, index) => (
           <div key={index}>
@@ -41,10 +51,6 @@ const App = () => {
           </div>
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="data" />
-        <button type="submit">Add Block</button>
-      </form>
     </div>
   );
 };
