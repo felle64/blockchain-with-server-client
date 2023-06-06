@@ -17,7 +17,7 @@ const createNewBlock = (req, res) => {
   }
   const addedBlock = blockchain.addBlock({ data });
 
-  res.status(201).json({ message: "added new block", block: addedBlock });
+  res.status(201).json({ message: "Added new block!", block: addedBlock });
 };
 
 module.exports = {
