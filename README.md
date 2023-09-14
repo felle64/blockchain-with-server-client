@@ -1,3 +1,3 @@
-# blockchain-with-nodejs
+# blockchain-with-server-client
 
-A blockchain implementation in Node.js with React Client
+Blockchain implementation in Node.js with React Client
